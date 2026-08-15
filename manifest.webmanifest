@@ -1,0 +1,40 @@
+{
+  "name": "PixelForge 404",
+  "short_name": "PixelForge",
+  "description": "PixelForge 404 v7.0.0 Final — editor gráfico local-first con capas, PSD/PSB, RAW, compositor tiled e IA neuronal local.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#090b10",
+  "theme_color": "#0b0d12",
+  "categories": [
+    "graphics",
+    "photo",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "id": "./",
+  "lang": "es",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}
