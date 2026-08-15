@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#0b0d12">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; img-src 'self' data: blob:; style-src 'self' 'sha256-m3NrWs5IytBbMMo164+UZIKnsFe6VFtZWZCQB3lGr3s='; script-src 'self' 'sha256-vDmGIkAw9QFL9GI1XJ7TALYlrB7EXArsFDXwSlgW67s=' 'sha256-PQTYsuDmV49C0fJTmwxMRiSGM6ouM3uaT3/ZrDw1Jfc=' 'wasm-unsafe-eval'; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
-<meta name="description" content="PixelForge 404 v7.0.0 Final — editor gráfico local-first con capas, PSD/PSB 8/16-bit, RAW, compositor tiled, Warp Mesh, Shape Layers e IA neuronal local.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; img-src 'self' data: blob:; style-src 'self' 'sha256-m3NrWs5IytBbMMo164+UZIKnsFe6VFtZWZCQB3lGr3s='; script-src 'self' 'sha256-vDmGIkAw9QFL9GI1XJ7TALYlrB7EXArsFDXwSlgW67s=' 'sha256-Tfs1m+oHX5MLDVdYOligrFeW04i2yOcXK9aq9M6MFT8=' 'wasm-unsafe-eval'; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="description" content="PixelForge 404 v7.0.1 Final — editor gráfico local-first con capas, PSD/PSB 8/16-bit, RAW, compositor tiled, Warp Mesh, Shape Layers e IA neuronal local.">
   <title>PixelForge 404</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
@@ -95,14 +95,14 @@ textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 @media(max-width:760px){.drop-hint{top:42px;bottom:28px}}</style>
 </head>
-<body data-pf-build="7.0.0">
+<body data-pf-build="7.0.1">
   <a class="skip-link" href="#stage">Ir al lienzo</a>
   <h1 class="sr-only">PixelForge 404 — editor gráfico profesional local-first</h1>
   <div id="app" class="app-shell">
     <header class="topbar">
-      <div class="brand" aria-label="PixelForge 404"><div class="brand-mark">PF</div><div><strong>PixelForge</strong><span>404 · v7.0.0 Final</span></div></div>
+      <div class="brand" aria-label="PixelForge 404"><div class="brand-mark">PF</div><div><strong>PixelForge</strong><span>404 · v7.0.1 Final</span></div></div>
       <nav class="menu" aria-label="Acciones principales">
-        <button data-action="new">Nuevo</button><span class="file-picker-button menu-file-picker"><span>Abrir</span><input id="fileInput" class="native-file-input image-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml,.psd,.psb,.cr2,.cr3,.nef,.arw,.dng,.raf,.orf,.rw2,.pef,.srw" aria-label="Abrir imagen, PSD, PSB o RAW"></span><button data-action="save-project">Guardar</button><span class="file-picker-button menu-file-picker"><span>Cargar</span><input id="projectInput" class="native-file-input project-file-input" type="file" accept="application/json,.p404" aria-label="Cargar proyecto PixelForge"></span><button data-action="export">Exportar</button>
+        <button data-action="new">Nuevo</button><span class="file-picker-button menu-file-picker"><span>Abrir</span><input id="fileInput" class="native-file-input image-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml,image/heic,image/heif,.heic,.heif,.psd,.psb,.cr2,.cr3,.nef,.arw,.dng,.raf,.orf,.rw2,.pef,.srw" aria-label="Abrir imagen, PSD, PSB o RAW"></span><button data-action="save-project">Guardar</button><span class="file-picker-button menu-file-picker"><span>Cargar</span><input id="projectInput" class="native-file-input project-file-input" type="file" accept="application/json,.p404" aria-label="Cargar proyecto PixelForge"></span><button data-action="export">Exportar</button>
       </nav>
       <div class="top-status"><span id="autosaveStatus">Autoguardado listo</span></div>
       <div class="history-actions"><button data-action="inspector" title="Mostrar panel" aria-label="Mostrar panel">☷</button><button data-action="undo" title="Deshacer (Ctrl+Z)" aria-label="Deshacer">↶</button><button data-action="redo" title="Rehacer (Ctrl+Shift+Z)" aria-label="Rehacer">↷</button></div>
@@ -152,7 +152,7 @@ textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
         <div id="stage" class="stage" tabindex="0" aria-label="Lienzo de edición">
           <div id="canvasWrap" class="canvas-wrap"><canvas id="displayCanvas" width="1200" height="800"></canvas><canvas id="overlayCanvas" width="1200" height="800"></canvas></div>
         </div>
-        <div id="dropHint" class="drop-hint"><div class="drop-card"><div class="drop-icon">＋</div><h1>PixelForge 404</h1><p>Editor local por capas, máscaras, selecciones y ajustes no destructivos.</p><div class="drop-actions"><span class="file-picker-button primary"><span>Abrir imagen</span><input class="native-file-input image-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml,.psd,.psb,.cr2,.cr3,.nef,.arw,.dng,.raf,.orf,.rw2,.pef,.srw" aria-label="Abrir imagen, PSD, PSB o RAW"></span><button data-action="new">Nuevo lienzo</button></div></div></div>
+        <div id="dropHint" class="drop-hint"><div class="drop-card"><div class="drop-icon">＋</div><h1>PixelForge 404</h1><p>Editor local por capas, máscaras, selecciones y ajustes no destructivos.</p><div class="drop-actions"><span class="file-picker-button primary"><span>Abrir imagen</span><input class="native-file-input image-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml,image/heic,image/heif,.heic,.heif,.psd,.psb,.cr2,.cr3,.nef,.arw,.dng,.raf,.orf,.rw2,.pef,.srw" aria-label="Abrir imagen, PSD, PSB o RAW"></span><button data-action="new">Nuevo lienzo</button></div></div></div>
 
         <footer class="statusbar"><span id="statusDoc">1200 × 800 px</span><span id="statusZoom">100%</span><span id="statusCursor">x: — y: —</span><span id="statusSelection">Sin selección</span><span id="statusLayer">1 capa</span></footer>
       </section>
@@ -213,7 +213,7 @@ textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
         <section class="panel io-panel">
           <div class="panel-heading"><h2>Formatos Pro</h2><span class="type-badge">I/O</span></div>
           <p id="formatStatus" class="panel-help">PSD/PSB RGB/gris 8/16-bit con capas y compresión compatible. RAW profesional se integra automáticamente al desplegar con GitHub Actions; en ejecución local se activa con tools/install-libraw.*.</p>
-          <div class="panel-actions"><span class="file-picker-button"><span>Abrir PSD / RAW / imagen</span><input class="native-file-input image-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml,.psd,.psb,.cr2,.cr3,.nef,.arw,.dng,.raf,.orf,.rw2,.pef,.srw" aria-label="Abrir imagen, PSD, PSB o RAW"></span></div>
+          <div class="panel-actions"><span class="file-picker-button"><span>Abrir PSD / RAW / imagen</span><input class="native-file-input image-file-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/svg+xml,image/heic,image/heif,.heic,.heif,.psd,.psb,.cr2,.cr3,.nef,.arw,.dng,.raf,.orf,.rw2,.pef,.srw" aria-label="Abrir imagen, PSD, PSB o RAW"></span></div>
         </section>
 
         <section class="panel fx-panel">
@@ -942,7 +942,7 @@ for(const id of ['brightness','contrast','saturation','blackPoint','gamma','whit
 function resetSelectionState(){selection=null;selectionChanged()}
 async function newDocument(w=1200,h=800,bg='transparent'){try{doc=new PixelDocument(w,h,bg);destructiveAdjustments=defaultAdjustments();dirty=false;showWelcome=false;editMask=false;cloneSource=null;history.limit=viewportMode()?6:32;await history.reset(doc);syncCanvasSize();fitView();selection=null;renderAll();scheduleAutosave();toast('Documento creado')}catch(err){console.error(err);toast('No se pudo crear el documento')}}
 $$('[data-action="new"]').forEach(b=>b.onclick=()=>$('#newDialog').showModal());$('#createDoc').onclick=e=>{e.preventDefault();void newDocument(clamp(Number($('#newWidth').value)||1200,32,8192),clamp(Number($('#newHeight').value)||800,32,8192),$('#newBg').value);$('#newDialog').close()};
-const imageFileInputs=$$('.image-file-input');imageFileInputs.forEach(input=>input.addEventListener('change',()=>{const f=input.files?.[0];if(f)void openImageFile(f);input.value=''}));
+const imageFileInputs=$$('.image-file-input');imageFileInputs.forEach(input=>input.addEventListener('change',async()=>{const f=input.files?.[0];try{if(f)await openImageFile(f)}finally{input.value=''}}));
 async function openImageFile(file){
   try{
     if(!file||file.size<=0)throw new Error('Archivo vacío');if(file.size>MAX_OPEN_FILE_BYTES)throw new Error('Archivo demasiado grande para abrirlo de forma segura');
@@ -963,7 +963,7 @@ async function openImageFile(file){
     }
     if(!doc.layers.length)doc.addTiledLayer('Vacía',{tileSize:512,width:doc.width,height:doc.height,tiles:[]});
     destructiveAdjustments=defaultAdjustments();dirty=false;showWelcome=false;editMask=false;selection=null;cloneSource=null;history.limit=viewportMode()?6:32;await history.reset(doc);syncCanvasSize();fitView();renderAll();scheduleAutosave();toast(openedLabel)
-  }catch(err){console.error(err);toast(err?.message?`No se pudo abrir: ${err.message.slice(0,110)}`:'No se pudo abrir la imagen')}
+  }catch(err){console.error(err);const ext=(file?.name?.split('.').pop()||'').toLowerCase();if(ext==='heic'||ext==='heif')toast('No se pudo decodificar HEIC/HEIF en este Safari. En Fotos usa Compartir → Guardar en Archivos como JPEG, o cambia Cámara → Formatos → Más compatible.');else toast(err?.message?`No se pudo abrir: ${err.message.slice(0,110)}`:'No se pudo abrir la imagen')}
 }
 stage.addEventListener('dragover',e=>{e.preventDefault();stage.classList.add('dragging')});stage.addEventListener('dragleave',()=>stage.classList.remove('dragging'));stage.addEventListener('drop',e=>{e.preventDefault();stage.classList.remove('dragging');const f=[...e.dataTransfer.files].find(f=>f.type.startsWith('image/')||/\.(psd|psb|cr2|cr3|nef|arw|dng|raf|orf|rw2|pef|srw)$/i.test(f.name));if(f)void openImageFile(f)});window.addEventListener('paste',e=>{const f=[...e.clipboardData.files].find(f=>f.type.startsWith('image/'));if(f)void openImageFile(f)});
 

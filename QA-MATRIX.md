@@ -1,4 +1,4 @@
-# PixelForge 404 v7.0.0 Final — QA Matrix
+# PixelForge 404 v7.0.1 Final — QA Matrix
 
 ## Estado automatizado
 
