@@ -24,6 +24,7 @@ const appSource=await fs.readFile(path.join(ROOT,'js/app.js'),'utf8');
 const indexSource=await fs.readFile(path.join(ROOT,'index.html'),'utf8');
 check('Sin click sintético para Abrir',!appSource.includes('fileInput.click()')&&!appSource.includes('[data-action=\"open\"]'));
 check('Tres inputs nativos de imagen',(indexSource.match(/image-file-input/g)||[]).length>=3);
+check('iOS: input se limpia tras await openImageFile',appSource.includes("input.addEventListener('change',async()=>{const f=input.files?.[0];try{if(f)await openImageFile(f)}finally{input.value=''}})"));
 check('Carga proyecto nativa',!appSource.includes("$('#projectInput').click()"));
 check('Bienvenida fuera del stage',indexSource.includes('</div>\n        <div id="dropHint" class="drop-hint">'));
 

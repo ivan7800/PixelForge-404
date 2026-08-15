@@ -66,7 +66,7 @@ if curve_pos<0 or start_pos<curve_pos: fail('Arranque prematuro: startApp debe e
 if 'verifyUiBindings();' not in app: fail('Falta autoverificación de handlers UI en el arranque')
 if '<script type="module" src="js/app.js"></script>' in html: fail('index.html sigue dependiendo de ES Modules y fallará en file://')
 if 'id="pf-core"' not in html: fail('index.html no embebe el bundle portable')
-if "pixelforge-404-v7.0.0-final" not in sw: fail('Cache del Service Worker no fue incrementada tras el hotfix')
+if "pixelforge-404-v7.0.1-final" not in sw: fail('Cache del Service Worker no fue incrementada tras el hotfix')
 if "codeLike?networkFirst" not in sw: fail('Service Worker no usa network-first para código actualizable')
 if "fallbackToIndex=false" not in sw or "e.request.mode==='navigate'" not in sw: fail('Fallback del Service Worker puede devolver HTML para recursos JS/CSS')
 if "dataset.appReady === 'true'" not in (root/'js/boot.js').read_text(encoding='utf-8'): fail('boot.js puede confundir errores posteriores con fallo de arranque')

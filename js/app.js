@@ -306,7 +306,7 @@ for(const id of ['brightness','contrast','saturation','blackPoint','gamma','whit
 function resetSelectionState(){selection=null;selectionChanged()}
 async function newDocument(w=1200,h=800,bg='transparent'){try{doc=new PixelDocument(w,h,bg);destructiveAdjustments=defaultAdjustments();dirty=false;showWelcome=false;editMask=false;cloneSource=null;history.limit=viewportMode()?6:32;await history.reset(doc);syncCanvasSize();fitView();selection=null;renderAll();scheduleAutosave();toast('Documento creado')}catch(err){console.error(err);toast('No se pudo crear el documento')}}
 $$('[data-action="new"]').forEach(b=>b.onclick=()=>$('#newDialog').showModal());$('#createDoc').onclick=e=>{e.preventDefault();void newDocument(clamp(Number($('#newWidth').value)||1200,32,8192),clamp(Number($('#newHeight').value)||800,32,8192),$('#newBg').value);$('#newDialog').close()};
-const imageFileInputs=$$('.image-file-input');imageFileInputs.forEach(input=>input.addEventListener('change',()=>{const f=input.files?.[0];if(f)void openImageFile(f);input.value=''}));
+const imageFileInputs=$$('.image-file-input');imageFileInputs.forEach(input=>input.addEventListener('change',async()=>{const f=input.files?.[0];try{if(f)await openImageFile(f)}finally{input.value=''}}));
 async function openImageFile(file){
   try{
     if(!file||file.size<=0)throw new Error('Archivo vacío');if(file.size>MAX_OPEN_FILE_BYTES)throw new Error('Archivo demasiado grande para abrirlo de forma segura');
@@ -327,7 +327,7 @@ async function openImageFile(file){
     }
     if(!doc.layers.length)doc.addTiledLayer('Vacía',{tileSize:512,width:doc.width,height:doc.height,tiles:[]});
     destructiveAdjustments=defaultAdjustments();dirty=false;showWelcome=false;editMask=false;selection=null;cloneSource=null;history.limit=viewportMode()?6:32;await history.reset(doc);syncCanvasSize();fitView();renderAll();scheduleAutosave();toast(openedLabel)
-  }catch(err){console.error(err);toast(err?.message?`No se pudo abrir: ${err.message.slice(0,110)}`:'No se pudo abrir la imagen')}
+  }catch(err){console.error(err);const ext=(file?.name?.split('.').pop()||'').toLowerCase();if(ext==='heic'||ext==='heif')toast('No se pudo decodificar HEIC/HEIF en este Safari. En Fotos usa Compartir → Guardar en Archivos como JPEG, o cambia Cámara → Formatos → Más compatible.');else toast(err?.message?`No se pudo abrir: ${err.message.slice(0,110)}`:'No se pudo abrir la imagen')}
 }
 stage.addEventListener('dragover',e=>{e.preventDefault();stage.classList.add('dragging')});stage.addEventListener('dragleave',()=>stage.classList.remove('dragging'));stage.addEventListener('drop',e=>{e.preventDefault();stage.classList.remove('dragging');const f=[...e.dataTransfer.files].find(f=>f.type.startsWith('image/')||/\.(psd|psb|cr2|cr3|nef|arw|dng|raf|orf|rw2|pef|srw)$/i.test(f.name));if(f)void openImageFile(f)});window.addEventListener('paste',e=>{const f=[...e.clipboardData.files].find(f=>f.type.startsWith('image/'));if(f)void openImageFile(f)});
 

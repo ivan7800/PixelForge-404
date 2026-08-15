@@ -1,4 +1,4 @@
-# PixelForge 404 v7.0.0 Final
+# PixelForge 404 v7.0.1 Final
 
 Editor gráfico web/PWA local-first preparado para GitHub Pages. Incluye capas raster, texto, shapes, grupos, Smart Layers 404, máscaras, ajustes, filtros, selecciones, Warp/Perspective, historial, proyecto `.p404`, PSD/PSB, soporte RAW mediante LibRaw-WASM durante el despliegue, compositor tiled e IA neuronal local.
 
@@ -55,7 +55,7 @@ Si una URL publicada insiste en servir una versión anterior, abre una vez `RESE
 ```bash
 git init
 git add .
-git commit -m "Release PixelForge 404 v7.0.0"
+git commit -m "Release PixelForge 404 v7.0.1"
 git branch -M main
 git remote add origin https://github.com/TU-USUARIO/PixelForge-404.git
 git push -u origin main

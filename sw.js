@@ -1,4 +1,4 @@
-const CACHE='pixelforge-404-v7.0.0-final';
+const CACHE='pixelforge-404-v7.0.1-final';
 const CORE=['./','./index.html','./manifest.webmanifest','./models/pixelforge-neural-lite.json','./qa.html','./js/qa.js','./icons/icon.svg','./icons/icon-192.png','./icons/icon-512.png'];
 const OPTIONAL=['./vendor/libraw/index.js','./vendor/libraw/worker.js','./vendor/libraw/libraw.js','./vendor/libraw/libraw.wasm'];
 function isolated(resp){if(!resp||resp.type==='opaque')return resp;const h=new Headers(resp.headers);h.set('Cross-Origin-Opener-Policy','same-origin');h.set('Cross-Origin-Embedder-Policy','require-corp');h.set('Cross-Origin-Resource-Policy','same-origin');return new Response(resp.body,{status:resp.status,statusText:resp.statusText,headers:h})}

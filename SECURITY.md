@@ -18,6 +18,6 @@ El despliegue de GitHub Pages instala LibRaw-WASM mediante `tools/install-libraw
 No publiques archivos privados o imágenes sensibles en un issue. Describe el comportamiento, navegador, versión, pasos de reproducción y, si hace falta, usa un archivo de prueba sin información personal.
 
 
-## Release final v7.0.0
+## Release final v7.0.1
 
 El núcleo portable está embebido en `index.html` y autorizado mediante hashes SHA-256 en la CSP. Esto evita `unsafe-inline` y elimina la dependencia de scripts externos para el arranque.
