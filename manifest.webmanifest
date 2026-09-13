@@ -1,7 +1,7 @@
 {
   "name": "PixelForge 404",
   "short_name": "PixelForge",
-  "description": "PixelForge 404 v7.0.1 Final — editor gráfico local-first con capas, PSD/PSB, RAW, compositor tiled e IA neuronal local.",
+  "description": "PixelForge 404 v7.1 UX/A11Y — editor gráfico local-first con capas, PSD/PSB, RAW, compositor tiled e IA neuronal local.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
