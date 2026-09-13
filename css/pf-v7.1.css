@@ -1,0 +1,175 @@
+/* PixelForge 404 v7.1 — UX / Accessibility / Mobile polish
+   Drop-in enhancement layer. No engine behaviour is replaced here. */
+
+:root{
+  --pf-a11y-focus: 3px;
+  --pf-touch: 44px;
+}
+
+/* Stronger, consistent focus without changing pointer appearance. */
+:where(button,[role="button"],a,input,select,textarea,[tabindex]):focus-visible{
+  outline: var(--pf-a11y-focus) solid var(--accent, #7c5cff) !important;
+  outline-offset: 2px !important;
+}
+
+/* Skip link for keyboard users. */
+.pf-skip-link{
+  position:fixed;
+  left:12px;
+  top:8px;
+  z-index:10000;
+  transform:translateY(-180%);
+  padding:9px 12px;
+  border-radius:8px;
+  background:#fff;
+  color:#090b10;
+  font-weight:800;
+  text-decoration:none;
+}
+.pf-skip-link:focus{transform:none}
+
+/* Inspector navigation */
+.pf-inspector-tabs{
+  position:sticky;
+  top:0;
+  z-index:6;
+  display:flex;
+  gap:5px;
+  padding:8px;
+  overflow-x:auto;
+  border-bottom:1px solid var(--line,#2a3040);
+  background:rgba(16,19,26,.98);
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+}
+.pf-inspector-tabs button{
+  flex:0 0 auto;
+  min-height:36px;
+  padding:6px 9px;
+  font-size:11px;
+  white-space:nowrap;
+}
+.pf-inspector-tabs button[aria-selected="true"]{
+  border-color:var(--accent,#7c5cff);
+  background:var(--surface-3,#1d2230);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--accent,#7c5cff) 55%,transparent) inset;
+}
+.pf-v71-panel-hidden{display:none !important}
+
+/* Clearer hierarchy */
+.rightbar .panel{
+  scroll-margin-top:52px;
+}
+.rightbar .panel h2{
+  line-height:1.35;
+}
+.rightbar .panel:focus-within{
+  background:color-mix(in srgb,var(--surface-2,#151923) 72%,transparent);
+}
+
+/* Touch targets: keep visual density while improving actual hit area. */
+@media (pointer:coarse){
+  .tool,
+  .layer-eye,
+  .layer-lock,
+  .panel-heading button,
+  .rightbar button,
+  .topbar button{
+    min-width:var(--pf-touch);
+    min-height:var(--pf-touch);
+  }
+  .tool{height:60px}
+  input[type="range"]{min-height:34px}
+}
+
+/* Mobile inspector launcher + backdrop. */
+.pf-mobile-inspector-toggle{
+  display:none;
+  position:fixed;
+  right:12px;
+  bottom:88px;
+  z-index:28;
+  min-width:48px;
+  min-height:48px;
+  border-radius:999px;
+  box-shadow:0 10px 35px #0009;
+  font-weight:800;
+}
+.pf-inspector-backdrop{
+  display:none;
+  position:fixed;
+  inset:52px 0 72px 0;
+  z-index:19;
+  background:#0009;
+  backdrop-filter:blur(2px);
+}
+body.pf-inspector-open .pf-inspector-backdrop{display:block}
+
+@media(max-width:760px){
+  .pf-mobile-inspector-toggle{display:grid;place-items:center}
+  .rightbar{
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+  .rightbar.open{
+    width:min(92vw,360px) !important;
+    padding-bottom:max(16px,env(safe-area-inset-bottom));
+  }
+  .pf-inspector-tabs{
+    top:0;
+    padding-top:max(8px,env(safe-area-inset-top));
+  }
+  /* Avoid tiny controls in dense panels. */
+  .rightbar input,
+  .rightbar select,
+  .rightbar button{
+    font-size:max(12px,1em);
+  }
+}
+
+/* Reduce accidental horizontal jumps in top/options bars. */
+.menu,.optionsbar,.toolbar{
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* More usable layer rows with keyboard focus. */
+.layer-item{
+  min-height:44px;
+}
+.layer-item[tabindex="0"]:focus-visible{
+  outline:2px solid var(--accent,#7c5cff);
+  outline-offset:-2px;
+}
+
+/* Screen-reader live region. */
+.pf-sr-only{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+
+/* Respect OS motion preferences. */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+
+/* High-contrast/forced-colors support. */
+@media(forced-colors:active){
+  .tool.active,
+  .pf-inspector-tabs button[aria-selected="true"]{
+    outline:2px solid Highlight;
+  }
+  .pf-inspector-backdrop{background:Canvas}
+}
